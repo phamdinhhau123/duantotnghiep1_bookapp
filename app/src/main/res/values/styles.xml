@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <!-- Thiết lập màu nền cho Bottom Navigation -->
+        <item name="android:background">@color/colorPrimary</item>
+        <!-- Thiết lập màu chữ cho các tab -->
+        <item name="itemTextColor">@color/tab_text_color</item>
+        <!-- Thiết lập màu chữ cho tab được chọn -->
+        <item name="itemTextColor" tools:ignore="DuplicateDefinition">@color/tab_selected_text_color</item>
+        <!-- Thiết lập kích thước chữ cho tab -->
+        <item name="itemTextAppearanceActive">@style/BottomNavigationTabText</item>
+        <!-- Thiết lập kích thước chữ cho tab được chọn -->
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationTabText</item>
+    </style>
+
+    <style name="BottomNavigationTabText">
+        <!-- Thiết lập kích thước chữ cho tab -->
+        <item name="android:textSize">12sp</item>
+        <!-- Thiết lập màu chữ cho tab -->
+        <item name="android:textColor">@color/tab_text_color</item>
+    </style>
+
+</resources>

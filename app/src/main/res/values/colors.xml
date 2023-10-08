@@ -10,4 +10,12 @@
     <color name="gray01">#cccccc</color>
     <color name="gray02">#777777</color>
     <color name="gray03">#EDEDED</color>
+    <!-- Định nghĩa màu chữ cho các tab -->
+    <color name="tab_text_color">#333333</color>
+
+    <!-- Định nghĩa màu chữ cho tab được chọn -->
+    <color name="tab_selected_text_color">#FF0000</color>
+
+    <!-- Định nghĩa màu nền cho Bottom Navigation -->
+    <color name="colorPrimary">#2196F3</color>
 </resources>
