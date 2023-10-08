@@ -104,12 +104,12 @@ public class LoginActivity extends AppCompatActivity {
                 .enqueue(new Callback<Customer>() {
                     @Override
                     public void onResponse(Call<Customer> call, Response<Customer> response) {
-                        Toast.makeText(getApplicationContext(),"Login Thanh Cong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"ĐĂNG NHẬP THÀNH CÔNG", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, DashBoard.class));
                     }
                     @Override
                     public void onFailure(Call<Customer> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"Login failded!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"ĐĂNG NHẬP THẤT BẠI", Toast.LENGTH_SHORT).show();
                         Logger.getLogger(RegisterActivity.class.getName()).log(Level.SEVERE, "Error occurred",t);
                     }
                 });
