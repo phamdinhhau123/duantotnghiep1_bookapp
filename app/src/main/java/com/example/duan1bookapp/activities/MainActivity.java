@@ -27,11 +27,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // handle skipBtn click, start continue without login screen
-        binding.skipBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DashboardUserActivity.class));
-            }
-        });
     }
 }

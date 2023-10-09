@@ -19,37 +19,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.DashBoard"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.PdfViewActivity"
+            android:name=".activities.ListPage"
             android:exported="false" />
         <activity
-            android:name=".activities.PdfDetailActivity"
+            android:name=".activities.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".activities.PdfEditActivity"
+            android:name=".activities.ListChapter"
             android:exported="false" />
         <activity
-            android:name=".activities.PdfListAdminActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.PdfAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.CategoryAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.DashboardAdminActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.DashboardUserActivity"
+            android:name=".activities.ListManga"
             android:exported="false" />
         <activity
             android:name=".activities.RegisterActivity"
@@ -62,8 +41,12 @@
             android:exported="false" />
         <activity
             android:name=".activities.SplashActivity"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

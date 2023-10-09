@@ -15,15 +15,7 @@ import com.example.duan1bookapp.databinding.ActivityRegisterBinding;
 import com.example.duan1bookapp.models.Customer;
 import com.example.duan1bookapp.retrofit.CustomerApi;
 import com.example.duan1bookapp.retrofit.RetrofitService;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
 
-    private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     RetrofitService retrofitService = new RetrofitService();
 
@@ -47,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // init firebase auth
-        firebaseAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait");
@@ -115,15 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
 
-//            register(customer);
-//        }
     }
 
-//    private void register() {
-//       CustomerApi customerApi =  retrofitService.getRetrofit().create(CustomerApi.class)
-//
-//
-//
-//    }
+
 
 }
