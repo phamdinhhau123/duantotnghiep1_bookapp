@@ -17,5 +17,12 @@
     <color name="tab_selected_text_color">#FF0000</color>
 
     <!-- Định nghĩa màu nền cho Bottom Navigation -->
-    <color name="colorPrimary">#2196F3</color>
+
+    <color name="gray04">#FBFBFB</color>
+    <color name="yellow">#FF9800</color>
+    <color name="yellow2">#FFC107</color>
+
+    <color name="blue01">#0065FF</color>
+    <color name="orange01">#FF9F10</color>
+    <color name="gray05">#F2F2F2</color>
 </resources>

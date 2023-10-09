@@ -23,7 +23,7 @@ public class DashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
-        bottomNavigationView = findViewById(R.id.fragment_container);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
         fragmentManager = getSupportFragmentManager();
 
         // Khởi tạo các fragment ứng với mỗi tab
@@ -57,7 +57,7 @@ public class DashBoard extends AppCompatActivity {
     // Phương thức để thay đổi fragment hiện tại
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.replace(R.id.bottomNavigation, fragment);
         fragmentTransaction.commit();
     }
 }
