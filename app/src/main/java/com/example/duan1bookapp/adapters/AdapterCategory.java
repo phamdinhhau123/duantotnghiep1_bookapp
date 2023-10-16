@@ -16,8 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duan1bookapp.activities.PdfListAdminActivity;
-import com.example.duan1bookapp.databinding.ActivityPdfListAdminBinding;
+
 import com.example.duan1bookapp.filters.FilterCategory;
 import com.example.duan1bookapp.models.ModelCategory;
 import com.example.duan1bookapp.databinding.RowCategoryBinding;
@@ -93,10 +92,10 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Holder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, PdfListAdminActivity.class);
-                intent.putExtra("categoryId",id);
-                intent.putExtra("categoryTitle",category);
-                context.startActivity(intent);
+//                Intent intent=new Intent(context, PdfListAdminActivity.class);
+//                intent.putExtra("categoryId",id);
+//                intent.putExtra("categoryTitle",category);
+//                context.startActivity(intent);
             }
         });
 

@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1bookapp.MyApplication;
 import com.example.duan1bookapp.activities.PdfDetailActivity;
-import com.example.duan1bookapp.activities.PdfEditActivity;
 import com.example.duan1bookapp.databinding.RowPdfAdminBinding;
 import com.example.duan1bookapp.filters.FilterPdfAdmin;
 import com.example.duan1bookapp.models.ModelPdf;
@@ -138,9 +137,9 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
                         if (which == 0) {
                             //edit click, open pdf edit activity to edit book info
 
-                            Intent intent = new Intent(context, PdfEditActivity.class);
-                            intent.putExtra("bookId", bookId);
-                            context.startActivity(intent);
+//                            Intent intent = new Intent(context, PdfEditActivity.class);
+//                            intent.putExtra("bookId", bookId);
+//                            context.startActivity(intent);
 
                         } else if (which==1) {
                             //delete click

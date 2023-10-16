@@ -24,7 +24,9 @@ public class DashBoard extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
 
+
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
+
             if (item.getItemId() == R.id.ic_home) {
                 replaceFragment(new HomeFragment());
             } else if (item.getItemId() == R.id.ic_manga) {

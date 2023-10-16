@@ -166,8 +166,8 @@
                     app:tabTextColor="@color/black"
                     app:tabUnboundedRipple="false" />
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewpager"
+                <FrameLayout
+                    android:id="@+id/frame_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/tabLayout" />

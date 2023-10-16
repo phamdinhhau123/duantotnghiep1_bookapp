@@ -54,11 +54,11 @@ public class SplashActivity extends AppCompatActivity {
                             // check user type
                             if (userType.equals("user")) {
                                 // this is simple user, open user dasboard
-                                startActivity(new Intent(SplashActivity.this, DashboardUserActivity.class));
+//                                startActivity(new Intent(SplashActivity.this, DashboardUserActivity.class));
                                 finish();
                             } else if (userType.equals("admin")) {
                                 // this is admin, open admin dashboard
-                                startActivity((new Intent(SplashActivity.this, DashboardAdminActivity.class)));
+//                                startActivity((new Intent(SplashActivity.this, DashboardAdminActivity.class)));
                                 finish();
                             }
                         }
