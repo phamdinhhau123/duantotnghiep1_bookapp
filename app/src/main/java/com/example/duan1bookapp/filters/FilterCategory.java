@@ -3,7 +3,6 @@ package com.example.duan1bookapp.filters;
 import android.widget.Filter;
 
 import com.example.duan1bookapp.adapters.AdapterCategory;
-import com.example.duan1bookapp.models.ModelCategory;
 
 import java.util.ArrayList;
 

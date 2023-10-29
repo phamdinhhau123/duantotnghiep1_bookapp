@@ -1,10 +1,8 @@
 package com.example.duan1bookapp.filters;
 
-import android.widget.Adapter;
 import android.widget.Filter;
 
 import com.example.duan1bookapp.adapters.AdapterPdfUser;
-import com.example.duan1bookapp.models.ModelPdf;
 
 import java.util.ArrayList;
 

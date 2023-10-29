@@ -25,6 +25,8 @@ public class HomeFragment extends Fragment {
         clickUnble();
         return binding.getRoot();
 
+
+
     }
     @SuppressLint("ClickableViewAccessibility")
     private void clickUnble(){
@@ -81,4 +83,6 @@ public class HomeFragment extends Fragment {
         });
 
     }
+
+
 }

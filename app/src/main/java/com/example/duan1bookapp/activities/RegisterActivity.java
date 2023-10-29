@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
 
-    private FirebaseAuth firebaseAuth;
+
     private ProgressDialog progressDialog;
     RetrofitService retrofitService = new RetrofitService();
 
@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // init firebase auth
-        firebaseAuth = FirebaseAuth.getInstance();
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait");

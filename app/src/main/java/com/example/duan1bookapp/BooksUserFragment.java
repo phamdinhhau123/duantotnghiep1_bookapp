@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.example.duan1bookapp.adapters.AdapterPdfUser;
 import com.example.duan1bookapp.databinding.FragmentBooksUserBinding;
-import com.example.duan1bookapp.models.ModelPdf;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
