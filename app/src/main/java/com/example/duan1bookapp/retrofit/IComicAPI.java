@@ -25,4 +25,6 @@ public interface IComicAPI {
     @Headers("Content-Type: application/json")
     @GET("/api/v1/product/link/{linkid}")
     Call<List<Link>> getPageList(@Path("linkid")int linkid);
+
+
 }
