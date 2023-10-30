@@ -45,7 +45,7 @@ public class MyPageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Customer customer
+    private Customer customer;
     public MyPageFragment() {
         // Required empty public constructor
     }

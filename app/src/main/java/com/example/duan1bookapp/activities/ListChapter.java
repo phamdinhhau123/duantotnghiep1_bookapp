@@ -100,9 +100,9 @@ public class ListChapter extends AppCompatActivity {
     }
 
     private void initUi(){
-        appBarLayout= findViewById(R.id.appBarLayoutLC);
-        collapsingToolbarLayout= findViewById(R.id.collapsingToolbarLayoutLC);
-        toolbar = findViewById(R.id.toolbarLC);
+//        appBarLayout= findViewById(R.id.appBarLayoutLC);
+//        collapsingToolbarLayout= findViewById(R.id.collapsingToolbarLayoutLC);
+//        toolbar = findViewById(R.id.toolbarLC);
 //        floatingActionButton = findViewById(R.id.fabLC);
         recycler_chapter = findViewById(R.id.recycler_chapter);
     }
