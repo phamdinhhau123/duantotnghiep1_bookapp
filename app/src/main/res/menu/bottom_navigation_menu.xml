@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/ic_home"
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@mipmap/bottom_btn1"
         android:title="Home"/>
     <item android:id="@+id/ic_manga"
-        android:icon="@drawable/baseline_menu_book_24"
-        android:title="Manga"/>
-    <item android:id="@+id/ic_menubook"
-        android:icon="@drawable/baseline_menu_book_24"
-        android:title="Reading"/>
+        android:icon="@drawable/ic_category_gray"
+        android:title="Type"/>
+    <item android:id="@+id/ic_manga2"
+        android:icon="@drawable/bottom_btn3"
+        android:title="review"/>
+    <item android:id="@+id/ic_buy_coin"
+        android:icon="@mipmap/buy"
+        android:title="Donate"/>
     <item android:id="@+id/ic_user"
-        android:icon="@drawable/baseline_person_24"
+        android:icon="@mipmap/bottom_btn2"
         android:title="User"/>
 </menu>

@@ -1,6 +1,7 @@
 package com.example.duan1bookapp.retrofit;
 
 import com.example.duan1bookapp.models.Chapter;
+import com.example.duan1bookapp.models.Customer;
 import com.example.duan1bookapp.models.Link;
 import com.example.duan1bookapp.models.Product;
 
@@ -25,6 +26,4 @@ public interface IComicAPI {
     @Headers("Content-Type: application/json")
     @GET("/api/v1/product/link/{linkid}")
     Call<List<Link>> getPageList(@Path("linkid")int linkid);
-
-
 }

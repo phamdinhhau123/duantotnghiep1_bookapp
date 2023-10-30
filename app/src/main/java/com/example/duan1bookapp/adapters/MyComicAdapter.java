@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
+
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemProductListener;
 import com.example.duan1bookapp.models.Product;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
         if(product == null){
             return;
         }
-        String url = "http://192.168.1.10:8080/api/v1/product/image/"+product.productImageName;
+        String url = "http://192.168.1.11:8080/api/v1/product/image/"+product.productImageName;
         Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         holder.textView.setText(product.productName);
 

@@ -1,17 +1,26 @@
 package com.example.duan1bookapp.models;
 
-import java.util.Date;
-
-public class Customer {
+import java.io.Serializable;
+public class Customer  implements Serializable {
     private int id;
     private String customerName;
     private String customerPassword;
     private String customereMail;
     private String customerbirthDate;
 
+    private Coin coin;
+
     public Customer() {
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCustomerName() {
         return customerName;
@@ -51,6 +60,14 @@ public class Customer {
 
     public void setCustomerbirthDate(String customerbirthDate) {
         this.customerbirthDate = customerbirthDate;
+    }
+
+    public Coin getCoin() {
+        return coin;
+    }
+
+    public void setCoin(Coin coin) {
+        this.coin = coin;
     }
 
     public Customer(String customerName, String customerPassword, String customereMail, String customerbirthDate, boolean enabled_CS) {

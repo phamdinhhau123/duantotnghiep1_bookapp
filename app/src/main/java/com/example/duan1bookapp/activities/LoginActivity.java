@@ -14,16 +14,7 @@ import com.example.duan1bookapp.databinding.ActivityLoginBinding;
 import com.example.duan1bookapp.models.Customer;
 import com.example.duan1bookapp.retrofit.CustomerApi;
 import com.example.duan1bookapp.retrofit.RetrofitService;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,14 +24,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
-    //test
-
     private ActivityLoginBinding binding;
-
     private RetrofitService retrofitService = new RetrofitService();
-
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //init firebase auth
 
-        // setup progressDialog
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
-        progressDialog.setCanceledOnTouchOutside(false);
 
         // handle click, go to register screen
         binding.noAccountTv.setOnClickListener(new View.OnClickListener() {
@@ -104,12 +83,17 @@ public class LoginActivity extends AppCompatActivity {
                 .enqueue(new Callback<Customer>() {
                     @Override
                     public void onResponse(Call<Customer> call, Response<Customer> response) {
-                        Toast.makeText(getApplicationContext(),"ĐĂNG NHẬP THÀNH CÔNG", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, DashBoard.class));
-                    }
+                        Toast.makeText(getApplicationContext(),"Login Thanh Cong", Toast.LENGTH_SHORT).show();
+                        Customer customer = response.body();
+                        Intent intent = new Intent(LoginActivity.this, DashBoard.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("object_customer",customer);
+                        intent.putExtras(bundle);
+                        startActivity(intent);                    }
                     @Override
                     public void onFailure(Call<Customer> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"ĐĂNG NHẬP THẤT BẠI", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Login failded!", Toast.LENGTH_SHORT).show();
                         Logger.getLogger(RegisterActivity.class.getName()).log(Level.SEVERE, "Error occurred",t);
                     }
                 });
