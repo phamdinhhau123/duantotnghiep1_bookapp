@@ -23,13 +23,18 @@
             android:hint="Search"
             android:padding="10dp"
             android:textColorHint="@color/gray01" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="165dp"
-            android:background="@drawable/back02"/>
+
 
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sach"
+        android:fontFamily="@font/jost"
+        android:textSize="18dp"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_comic_1"
