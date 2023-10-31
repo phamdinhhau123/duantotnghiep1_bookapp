@@ -54,14 +54,7 @@
       android:layout_margin="5dp"
       android:layout_width="match_parent"
       android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jost_semibold"
-        android:text="Sách"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="10dp"
