@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    ArrayList<slideShow> slideShowsList;
+    List<slideShow> slideShowsList;
     SliderAdapterExample sliderAdapterExample;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,18 +110,23 @@ public class HomeFragment extends Fragment {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-    private void loadSlideShow(){
-        slideShowsList=new ArrayList<>();
-        IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
-        Call<List<slideShow>> call= iComicAPI.getShowData();
+    private void loadSlideShow() {
+        slideShowsList = new ArrayList<>();
+        IComicAPI iComicAPI = retrofitService.getRetrofit().create(IComicAPI.class);
+        Call<List<slideShow>> call = iComicAPI.getShowData();
 
         call.enqueue(new Callback<List<slideShow>>() {
             @Override
             public void onResponse(Call<List<slideShow>> call, Response<List<slideShow>> response) {
-                if(response.isSuccessful()){
-                    slideShowsList= (ArrayList<slideShow>) response.body();
+                if (response.isSuccessful()) {
+                    slideShowsList = (ArrayList<slideShow>) response.body();
 
-                    sliderAdapterExample= new SliderAdapterExample(getContext(), slideShowsList);
+                    // Giới hạn danh sách slideShowsList thành 5 phần tử
+                    if (slideShowsList.size() > 5) {
+                        slideShowsList = slideShowsList.subList(0, 5);
+                    }
+
+                    sliderAdapterExample = new SliderAdapterExample(getContext(), slideShowsList);
                     binding.imageSlider.setSliderAdapter(sliderAdapterExample);
                     binding.imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM);
                     binding.imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -135,10 +140,9 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<slideShow>> call, Throwable t) {
-
+                // Xử lý lỗi
             }
         });
-
-
     }
+
 }
