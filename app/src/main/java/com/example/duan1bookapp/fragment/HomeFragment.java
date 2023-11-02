@@ -17,10 +17,13 @@ import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemProductListener;
 import com.example.duan1bookapp.activities.ListChapter;
 import com.example.duan1bookapp.adapters.MyComicAdapter;
+import com.example.duan1bookapp.adapters.SliderAdapterExample;
 import com.example.duan1bookapp.models.Product;
+import com.example.duan1bookapp.models.slideShow;
 import com.example.duan1bookapp.retrofit.IComicAPI;
 import com.example.duan1bookapp.retrofit.RetrofitService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,6 +36,9 @@ public class HomeFragment extends Fragment {
     private List<Product> comicList;
     private RecyclerView recycler_comic;
     private View rghomeview;
+    //slideShow
+    ArrayList<slideShow> slideShowsList;
+    SliderAdapterExample sliderAdapterExample;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -93,5 +99,8 @@ public class HomeFragment extends Fragment {
         bundle.putSerializable("object_product",product);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+    private void loadSlideShow{
+        slideShowList =new ArrayList<>();
     }
 }
