@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class slideShow implements Serializable {
     public int id;
-    public String productNameS;
-    public String getProductNameS;
+    public String productName;
+    public String productImageName;
 
-    public slideShow(int id, String productNameS, String getProductNameS) {
+    public slideShow(int id, String productName, String productImageName) {
         this.id = id;
-        this.productNameS = productNameS;
-        this.getProductNameS = getProductNameS;
+        this.productName = productName;
+        this.productImageName = productImageName;
     }
 
     public int getId() {
@@ -21,19 +21,19 @@ public class slideShow implements Serializable {
         this.id = id;
     }
 
-    public String getProductNameS() {
-        return productNameS;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductNameS(String productNameS) {
-        this.productNameS = productNameS;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getGetProductNameS() {
-        return getProductNameS;
+    public String getProductImageName() {
+        return productImageName;
     }
 
-    public void setGetProductNameS(String getProductNameS) {
-        this.getProductNameS = getProductNameS;
+    public void setProductImageName(String productImageName) {
+        this.productImageName = productImageName;
     }
 }

@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.example.duan1bookapp.R;
-import com.example.duan1bookapp.a_interface.IClickItemProductListener;
-import com.example.duan1bookapp.models.Product;
 import com.example.duan1bookapp.models.slideShow;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -20,58 +18,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample.MyViewHolder1> {
-    private List<Product> comicList;
-    private IClickItemProductListener iClickItemProductListener;
-    private List<slideShow> mSliderItems = new ArrayList<>();
+    private List<slideShow> mSliderItems;
     private Context context;
 
-    public SliderAdapterExample(Context context, List<slideShow> mSliderItems) {
+    public SliderAdapterExample(Context context, List<slideShow> sliderItems) {
         this.context = context;
-        this.mSliderItems = mSliderItems;
-
-    }
-    public void renewItems(List<slideShow> sliderItems) {
         this.mSliderItems = sliderItems;
-        notifyDataSetChanged();
-    }
-    public void deleteItem(int position) {
-        this.mSliderItems.remove(position);
-        notifyDataSetChanged();
     }
 
-    public void addItem(slideShow sliderItem) {
-        this.mSliderItems.add(sliderItem);
-        notifyDataSetChanged();
-    }
     @Override
     public MyViewHolder1 onCreateViewHolder(ViewGroup parent) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item_slide_show, null);
         return new MyViewHolder1(inflate);
     }
 
+    @Override
     public void onBindViewHolder(MyViewHolder1 holder, int position) {
-        Product product= comicList.get(position);
-        if (product== null){
+        slideShow product = mSliderItems.get(position);
+        if (product == null) {
             return;
         }
-        String url = "http://192.168.1.11:8080/api/v1/product/image/"+product.productImageName;
+        String url = "http://192.168.1.251:8080/api/v1/product/image/" + product.productImageName; // Sửa productImageName thành productImageNameS
         Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         holder.textView.setText(product.productName);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                iClickItemProductListener.onClickItemUser(product);
-            }
-        });
-
-    }
-    public int getItemCount() {
-        return comicList.size();
+        // Đảm bảo rằng bạn đã khai báo iClickItemProductListener và sử dụng nó khi người dùng nhấn vào một mục.
     }
 
-
-
+    @Override
+    public int getCount() {
+        return mSliderItems.size();
+    }
 
     class MyViewHolder1 extends SliderViewAdapter.ViewHolder {
         ImageView imageView;
@@ -79,11 +56,8 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
 
         public MyViewHolder1(@NonNull View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.image_view);
-            textView = (TextView) itemView.findViewById(R.id.manga_name);
-
+            imageView = itemView.findViewById(R.id.imgSlide);
+            textView = itemView.findViewById(R.id.tv_title);
         }
     }
-
-
 }
