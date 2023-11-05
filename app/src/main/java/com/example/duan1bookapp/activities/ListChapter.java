@@ -151,5 +151,10 @@ public class ListChapter extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void checkIsFavorite(){
+        IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
+
+    }
 }
 //Log.v("TAG", "11111111=" + chapterList.get(0).name);

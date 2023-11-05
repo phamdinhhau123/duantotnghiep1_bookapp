@@ -99,17 +99,63 @@ public class ListChapterContent extends AppCompatActivity {
         }
         return super.onPrepareOptionsMenu(mMenu);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
+            case R.id.menu_bookmark:
+                handleBookmarkClick();
+                return true;
             case android.R.id.home:
                 finish();
                 return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        if(item.getTitle() == "Add2"){
-            Toast.makeText(ListChapterContent.this,"click btn add2", Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
     }
+
+
+    //    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case android.R.id.home:
+//                finish();
+//                return true;
+//        }
+//        if(item.getTitle() == "Add2"){
+//            Toast.makeText(ListChapterContent.this,"click btn add2", Toast.LENGTH_SHORT).show();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+    // Trong `onCreate` hoặc `initToolbar`, thêm nút đánh dấu vào menu hoặc toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_lcc, menu);
+        return true;
+    }
+
+    // Xử lý sự kiện khi người dùng bấm vào nút đánh dấu
+
+    private void handleBookmarkClick() {
+        Link currentLink = linkList.get(currentPageIndex);
+        if (BookmarkManager.isBookmarked(currentLink)) {
+            BookmarkManager.removeBookmark(currentLink);
+            Toast.makeText(this, "Removed from bookmarks", Toast.LENGTH_SHORT).show();
+        } else {
+            BookmarkManager.addBookmark(currentLink);
+            Toast.makeText(this, "Added to bookmarks", Toast.LENGTH_SHORT).show();
+        }
+        invalidateOptionsMenu(); // Cập nhật biểu tượng đánh dấu trong menu hoặc toolbar
+    }
+
+    // Trong `onPrepareOptionsMenu`, cập nhật biểu tượng đánh dấu dựa trên trạng thái của trang hiện tại
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem bookmarkItem = menu.findItem(R.id.menu_bookmark);
+        if (currentLink != null) {
+            bookmarkItem.setIcon(BookmarkManager.isBookmarked(currentLink) ?
+                    R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
 }
