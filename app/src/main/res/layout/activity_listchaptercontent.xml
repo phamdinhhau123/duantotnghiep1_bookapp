@@ -20,12 +20,36 @@ tools:context=".activities.ListChapterContent">
             android:scaleType="centerCrop"
             android:background="@drawable/back02"
             app:layout_collapseMode="parallax"/>
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarLCC"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:theme="@style/ThemeOverlay.AppCompat.Light">
+            <TextView
+                android:id="@+id/toolbarSubtitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbarTitleTv"
+                android:layout_marginStart="170dp"
+                android:text="N/N"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_marginEnd="15dp"
+                android:layout_gravity="center||end"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/baseline_check_circle_outline_24"
+                />
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
     </com.google.android.material.appbar.CollapsingToolbarLayout>
 </com.google.android.material.appbar.AppBarLayout>
 <androidx.recyclerview.widget.RecyclerView
