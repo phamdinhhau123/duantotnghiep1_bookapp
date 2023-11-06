@@ -13,10 +13,11 @@
 
 
     <EditText
+        android:id="@+id/edtcoin"
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_marginTop="15dp"
-        android:hint="So tien muon nap"/>
+        android:hint="Số tiền muốn nạp "/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,28 +34,34 @@
         </Button>
 
     <RadioGroup
+        android:id="@+id/Gradiocoin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/Bradiocoin1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="10 coins = 10.000vnd"/>
         <RadioButton
+            android:id="@+id/Bradiocoin2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="20 coins = 20.000vnd"/>
         <RadioButton
+            android:id="@+id/Bradiocoin3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="20 coins = 30.000vnd"/>
+            android:text="30 coins = 30.000vnd"/>
         <RadioButton
+            android:id="@+id/Bradiocoin4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="20 coins = 40.000vnd"/>
+            android:text="40 coins = 40.000vnd"/>
         <RadioButton
+            android:id="@+id/Bradiocoin5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="20 coins = 50.000vnd"/>
+            android:text="50 coins = 50.000vnd"/>
     </RadioGroup>
 </LinearLayout>
 
