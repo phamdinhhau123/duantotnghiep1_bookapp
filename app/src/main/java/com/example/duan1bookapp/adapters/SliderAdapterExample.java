@@ -38,7 +38,7 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
         if (product == null) {
             return;
         }
-        String url = "http://192.168.1.251:8080/api/v1/product/image/" + product.productImageName; // Sửa productImageName thành productImageNameS
+        String url = "http://192.168.6.164:8080/api/v1/product/image/" + product.productImageName; // Sửa productImageName thành productImageNameS
         Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         holder.textView.setText(product.productName);
 
