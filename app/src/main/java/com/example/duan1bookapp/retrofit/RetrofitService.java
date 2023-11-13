@@ -1,5 +1,6 @@
 package com.example.duan1bookapp.retrofit;
 
+import com.example.duan1bookapp.models.Constants;
 import com.google.gson.Gson;
 
 import retrofit2.Retrofit;
@@ -14,7 +15,7 @@ public class RetrofitService {
 
     private void initializeRetrofit() {
         retrofit = new Retrofit
-                .Builder().baseUrl("http://192.168.1.10:8080")
+                .Builder().baseUrl(Constants.URL_API)
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
 //                .addConverterFactory(ScalarsConverterFactory.create())
 //                .addConverterFactory(GsonConverterFactory.create())

@@ -1,63 +1,71 @@
 package com.example.duan1bookapp.activities;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
 import com.example.duan1bookapp.R;
+import com.example.duan1bookapp.databinding.ActivityDashBoardBinding;
+import com.example.duan1bookapp.fragment.CategoryFragment;
+import com.example.duan1bookapp.fragment.CoinFragment;
+import com.example.duan1bookapp.fragment.FavoriteFragment;
+import com.example.duan1bookapp.fragment.HomeFragment;
+import com.example.duan1bookapp.fragment.MangaFrament;
+import com.example.duan1bookapp.fragment.MyPageFragment;
+import com.example.duan1bookapp.models.Customer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class DashBoard extends AppCompatActivity {
-
-    private BottomNavigationView bottomNavigationView;
-    private Fragment fragment1, fragment2, fragment3, fragment4;
-    private FragmentManager fragmentManager;
-
+    private Customer customer = null;
+    ActivityDashBoardBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dash_board);
+        binding = ActivityDashBoardBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        bottomNavigationView = findViewById(R.id.bottomNavigation);
-        fragmentManager = getSupportFragmentManager();
-
-        // Khởi tạo các fragment ứng với mỗi tab
-        fragment1 = new Tab1Fragment();
-        fragment2 = new Tab2Fragment();
-        fragment3 = new Tab3Fragment();
-        fragment4 = new Tab4Fragment();
-
-        // Mặc định hiển thị fragment1 khi ứng dụng được khởi chạy
-        setFragment(fragment1);
-
-        // Thiết lập sự kiện lắng nghe khi người dùng chọn tab
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.navigation_tab1) {
-                    setFragment(fragment1);
-                } else if (itemId == R.id.navigation_tab2) {
-                    setFragment(fragment2);
-                } else if (itemId == R.id.navigation_tab3) {
-                    setFragment(fragment3);
-                } else if (itemId == R.id.navigation_tab4) {
-                    setFragment(fragment4);
-                }
-                return true;
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        customer = (Customer) bundle.get("object_customer");
+        int customerid= customer.getId();
+        replaceFragment(new HomeFragment());
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_ic_home) {
+                replaceFragment(new HomeFragment());
+            } else if (item.getItemId() == R.id.nav_ic_manga) {
+                replaceFragment(new CategoryFragment());
+            } else if (item.getItemId() == R.id.nav_ic_comment) {
+                replaceFragment(new FavoriteFragment());
+            } else if (item.getItemId() == R.id.nav_ic_buy_coin) {
+                replaceFragment(new CoinFragment());
+            }else if (item.getItemId() == R.id.nav_ic_user) {
+                replaceFragment(new MyPageFragment());
             }
+            return true;
         });
-    }
 
-    // Phương thức để thay đổi fragment hiện tại
-    private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.bottomNavigation, fragment);
+    }
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager= getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
+
+
+

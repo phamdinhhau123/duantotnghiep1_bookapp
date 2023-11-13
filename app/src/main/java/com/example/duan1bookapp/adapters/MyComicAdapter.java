@@ -41,7 +41,7 @@ public class MyComicAdapter extends RecyclerView.Adapter<MyComicAdapter.MyViewHo
         if(product == null){
             return;
         }
-        String url = "http://192.168.1.10:8080/api/v1/product/image/"+product.productImageName;
+        String url = "http://192.168.1.11:8080/api/v1/product/image/"+product.productImageName;
         Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         holder.textView.setText(product.productName);
 

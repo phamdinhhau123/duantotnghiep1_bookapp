@@ -2,7 +2,6 @@ package com.example.duan1bookapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,14 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
-    //test
-
     private ActivityLoginBinding binding;
-
     private RetrofitService retrofitService = new RetrofitService();
-
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //init firebase auth
 
-        // setup progressDialog
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
-        progressDialog.setCanceledOnTouchOutside(false);
 
         // handle click, go to register screen
         binding.noAccountTv.setOnClickListener(new View.OnClickListener() {
@@ -87,21 +74,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String email,String pwd) {
-        Customer customer = new Customer();
-        customer.setCustomereMail(email);
-        customer.setCustomerPassword(pwd);
+        Customer customer = new Customer(pwd,email);
         CustomerApi customerApi =  retrofitService.getRetrofit().create(CustomerApi.class);
         customerApi.login(customer)
                 .enqueue(new Callback<Customer>() {
                     @Override
                     public void onResponse(Call<Customer> call, Response<Customer> response) {
+                        if(!response.isSuccessful())
+                        {
+                            Toast.makeText(getApplicationContext(),"User khong ton tai", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         Toast.makeText(getApplicationContext(),"Login Thanh Cong", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, ListManga.class));
-                    }
+                        Customer customer = response.body();
+                        Intent intent = new Intent(LoginActivity.this, DashBoard.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("object_customer",customer);
+                        intent.putExtras(bundle);
+                        startActivity(intent);                    }
                     @Override
                     public void onFailure(Call<Customer> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),"Login failded!", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(RegisterActivity.class.getName()).log(Level.SEVERE, "Error occurred",t);
+                        Logger.getLogger(RegisterActivity.class.getName()).log(Level.SEVERE, "Error occurred",t.getLocalizedMessage());
                     }
                 });
 

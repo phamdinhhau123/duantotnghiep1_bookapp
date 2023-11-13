@@ -17,12 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         android:usesCleartextTraffic="true"
+        tools:replace="android:theme"
         tools:targetApi="31">
         <activity
-            android:name=".activities.ListPage"
+            android:name=".activities.Comment1Activity"
+            android:exported="false"
+            android:label="@string/title_activity_comment1"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.NoActionBar" />
+        <activity
+            android:name=".activities.CommentActivity"
+            android:exported="false"
+            android:label="@string/title_activity_comment"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".activities.MyPageDetail"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity2"
+            android:name=".activities.ListChapterContent"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DashBoard"
             android:exported="false" />
         <activity
             android:name=".activities.ListChapter"
