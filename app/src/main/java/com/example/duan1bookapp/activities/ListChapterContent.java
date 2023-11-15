@@ -42,7 +42,7 @@ public class ListChapterContent extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private TextView toolbarSubtitleTv; // Thêm TextView cho toolbarSubtitle
 
-    private boolean isHorizontalLayout = false;
+    private boolean isHorizontalLayout = true;
     private Button toggleLayoutButton;
 
     private SharedPreferences sharedPrefs;
@@ -149,7 +149,7 @@ public class ListChapterContent extends AppCompatActivity {
     }
 
     private void updateToolbarSubtitle(int currentPage) {
-        if (linkList != null &&!linkList.isEmpty()) {
+        if (linkList != null && !linkList.isEmpty()) {
             int totalPage = linkList.size();
             toolbarSubtitleTv.setText(currentPage + "/" + totalPage);
         }
@@ -179,5 +179,13 @@ public class ListChapterContent extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        int currentPosition = layoutManager.findFirstVisibleItemPosition();
+        editor.putInt("SavedPosition", currentPosition); // Lưu vị trí vào SharedPreferences
+        editor.apply();
+        super.onBackPressed();
     }
 }
