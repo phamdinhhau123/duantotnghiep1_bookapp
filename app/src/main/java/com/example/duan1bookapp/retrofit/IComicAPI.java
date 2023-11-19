@@ -4,6 +4,7 @@ import com.example.duan1bookapp.models.Chapter;
 import com.example.duan1bookapp.models.Link;
 import com.example.duan1bookapp.models.MangaComment;
 import com.example.duan1bookapp.models.Product;
+import com.example.duan1bookapp.models.slideShow;
 
 import java.util.List;
 
@@ -27,6 +28,9 @@ public interface IComicAPI {
     Call<List<Product>> getComicByTypeList(@Path("categoryname")String categoryname);
 
     @Headers("Content-Type: application/json")
+    @GET("/api/v1/product/comic")
+    Call<List<slideShow>> getShowData();
+    @Headers("Content-Type: application/json")
     @GET("/api/v1/product/chapter/{mangaid}")
     Call<List<Chapter>> getChapterList(@Path("mangaid")int mangaid);
 
@@ -40,7 +44,5 @@ public interface IComicAPI {
     @Headers("Content-Type: application/json")
     @GET("/api/v1/product/{id}/comments/get")
     Call<List<MangaComment>> getGistCommentsById(@Path("id") int mangaid, @Query("page") int pageNum);
-
-
 
 }

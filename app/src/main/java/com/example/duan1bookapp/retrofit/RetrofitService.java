@@ -1,11 +1,10 @@
 package com.example.duan1bookapp.retrofit;
 
-import com.example.duan1bookapp.models.Constants;
+import com.example.duan1bookapp.Constants;
 import com.google.gson.Gson;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitService {
     private Retrofit retrofit;

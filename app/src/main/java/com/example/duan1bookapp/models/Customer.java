@@ -2,6 +2,7 @@ package com.example.duan1bookapp.models;
 
 import java.io.Serializable;
 public class Customer  implements Serializable {
+
     private int id;
     private String customerName;
     private String customerPassword;
