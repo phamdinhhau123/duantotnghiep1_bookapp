@@ -24,7 +24,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
     private ActivityLoginBinding binding;
     private RetrofitService retrofitService = new RetrofitService();
 
@@ -76,20 +75,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String email,String pwd) {
-        Customer customer = new Customer(pwd,email);
+        Customer customer = new Customer();
+        customer.setCustomereMail(email);
+        customer.setCustomerPassword(pwd);
         CustomerApi customerApi =  retrofitService.getRetrofit().create(CustomerApi.class);
         customerApi.login(customer)
                 .enqueue(new Callback<Customer>() {
                     @Override
                     public void onResponse(Call<Customer> call, Response<Customer> response) {
-                        if(!response.isSuccessful())
-                        {
-                            Toast.makeText(getApplicationContext(),"User khong ton tai", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
                         Toast.makeText(getApplicationContext(),"Login Thanh Cong", Toast.LENGTH_SHORT).show();
                         Customer customer = response.body();
                         Intent intent = new Intent(LoginActivity.this, DashBoard.class);
+
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("object_customer",customer);
                         intent.putExtras(bundle);
@@ -97,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Customer> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),"Login failded!", Toast.LENGTH_SHORT).show();
-                        Logger.getLogger(RegisterActivity.class.getName()).log(Level.SEVERE, "Error occurred",t.getLocalizedMessage());
+                        Logger.getLogger(RegisterActivity.class.getName()).log(Level.SEVERE, "Error occurred",t);
                     }
                 });
 

@@ -1,11 +1,8 @@
 package com.example.duan1bookapp.retrofit;
 
-import com.example.duan1bookapp.models.Chapter;
 import com.example.duan1bookapp.models.Coin;
 import com.example.duan1bookapp.models.Customer;
 import com.example.duan1bookapp.models.Link;
-import com.example.duan1bookapp.models.MangaComment;
-import com.example.duan1bookapp.models.Product;
 
 import java.util.List;
 
@@ -17,7 +14,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface CustomerApi {
     @Headers("Content-Type: application/json")
@@ -25,13 +21,14 @@ public interface CustomerApi {
     Call<Customer> save(@Body Customer customer);
 
     @Headers("Content-Type: application/json")
-    @POST("/api/v1/customer/cap-nhap")
-    Call<Customer> update(@Body Customer customer);
-
+    @POST("/api/v1/customer/inital-coin")
+    Call<Coin> initialCoin(@Body Coin coin);
 
     @Headers("Content-Type: application/json")
     @POST("/api/v1/customer/dang-nhap")
     Call<Customer> login(@Body Customer customer);
+
+
 
 }
 
