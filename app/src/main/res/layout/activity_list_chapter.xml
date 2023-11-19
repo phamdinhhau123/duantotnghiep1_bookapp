@@ -146,9 +146,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_chapter"
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="6dp"
+            android:padding="10dp"
             android:paddingBottom="16dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </LinearLayout>

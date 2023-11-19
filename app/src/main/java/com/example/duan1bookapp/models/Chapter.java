@@ -3,6 +3,7 @@ package com.example.duan1bookapp.models;
 import java.io.Serializable;
 
 public class Chapter implements Serializable {
+
     public int id;
     public int mangaid;
     public String name;

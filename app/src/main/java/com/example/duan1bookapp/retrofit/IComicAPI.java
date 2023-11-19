@@ -1,9 +1,9 @@
 package com.example.duan1bookapp.retrofit;
 
 import com.example.duan1bookapp.models.Chapter;
-import com.example.duan1bookapp.models.Customer;
 import com.example.duan1bookapp.models.Link;
 import com.example.duan1bookapp.models.Product;
+import com.example.duan1bookapp.models.slideShow;
 
 import java.util.List;
 
@@ -18,6 +18,10 @@ public interface IComicAPI {
     @Headers("Content-Type: application/json")
     @GET("/api/v1/product/comic")
     Call<List<Product>> getComicList();
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/product/comic")
+    Call<List<slideShow>> getShowData();
 
     @Headers("Content-Type: application/json")
     @GET("/api/v1/product/chapter/{mangaid}")

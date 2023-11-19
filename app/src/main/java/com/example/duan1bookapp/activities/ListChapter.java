@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.duan1bookapp.R;
@@ -48,10 +49,18 @@ public class ListChapter extends AppCompatActivity {
     private List<Chapter> chapterList;
     private RecyclerView recycler_chapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chapter);
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Quay lại trang trước
+            }
+        });
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
@@ -151,5 +160,9 @@ public class ListChapter extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void checkIsFavorite(){
+        IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
+
+    }
 }
-//Log.v("TAG", "11111111=" + chapterList.get(0).name);
