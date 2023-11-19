@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,26 +37,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListChapter extends AppCompatActivity {
-    private AppBarLayout appBarLayout;
-    private CollapsingToolbarLayout collapsingToolbarLayout;
-    private Toolbar toolbar;
-    private FloatingActionButton floatingActionButton;
-
-    private Menu mMenu;
-    private Boolean isExpanded = true;
-
     private RetrofitService retrofitService = new RetrofitService();
 
     private List<Chapter> chapterList;
     private RecyclerView recycler_chapter;
 
+    private CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chapter);
-        ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        ImageButton backBtn1 = findViewById(R.id.backBtn);
+        backBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed(); // Quay lại trang trước
@@ -68,13 +62,19 @@ public class ListChapter extends AppCompatActivity {
         Product product = (Product) bundle.get("object_product");
 
         initUi();
-        initToolbar();
-//        initToolbarAnimation();
+
         recycler_chapter.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_chapter.setLayoutManager(linearLayoutManager);
         fetchChapter(product.id);
-//        onClickBtnAdd();
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGoToComment();
+
+            }
+        });
 
     }
 
@@ -107,62 +107,16 @@ public class ListChapter extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+    private void onClickGoToComment() {
+        Intent intent = new Intent(this, Comment.class);
+        startActivity(intent);
+    }
 
     private void initUi(){
-//        appBarLayout= findViewById(R.id.appBarLayoutLC);
-//        collapsingToolbarLayout= findViewById(R.id.collapsingToolbarLayoutLC);
-//        toolbar = findViewById(R.id.toolbarLC);
-//        floatingActionButton = findViewById(R.id.fabLC);
+        cardView = findViewById(R.id.carview_comment);
         recycler_chapter = findViewById(R.id.recycler_chapter);
     }
-    private void initToolbar(){
-        setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
 
-//    private void onClickBtnAdd(){
-//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(ListChapter.this,"click btn add", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_lc,menu);
-        mMenu = menu;
-        return true;
-    }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu){
-        if(menu != null && (!isExpanded || menu.size() != 1))
-        {
-            mMenu.add("Add").setIcon(R.drawable.baseline_add_24).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-        }else{
 
-        }
-        return super.onPrepareOptionsMenu(mMenu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        if(item.getTitle() == "Add"){
-            Toast.makeText(ListChapter.this,"click btn add2", Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void checkIsFavorite(){
-        IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
-
-    }
 }

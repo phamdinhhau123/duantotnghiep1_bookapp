@@ -9,6 +9,7 @@ public class Customer  implements Serializable {
     private String customereMail;
     private String customerbirthDate;
 
+    private int localimageAvartar;
     private String avatar_url;
     private boolean enabled_CS ;
 
@@ -16,8 +17,12 @@ public class Customer  implements Serializable {
     private Coin coin;
     private Address address;
 
+    public Customer(String customerName, int localimageAvartar) {
+        this.customerName = customerName;
+        this.localimageAvartar = localimageAvartar;
+    }
 
-    public Customer(String customerName, String customerPassword, String customereMail, String customerbirthDate,Coin coin ,boolean enabled_CS) {
+    public Customer(String customerName, String customerPassword, String customereMail, String customerbirthDate, Coin coin , boolean enabled_CS) {
         this.customerName = customerName;
         this.customerPassword = customerPassword;
         this.customereMail = customereMail;
@@ -105,6 +110,7 @@ public class Customer  implements Serializable {
         this.customereMail = customereMail;
     }
 
+
     public Customer(String customerName, String customerPassword, String customereMail, Coin coin) {
         this.customerName = customerName;
         this.customerPassword = customerPassword;
@@ -161,4 +167,11 @@ public class Customer  implements Serializable {
         return login;
     }
 
+    public int getLocalimageAvartar() {
+        return localimageAvartar;
+    }
+
+    public void setLocalimageAvartar(int localimageAvartar) {
+        this.localimageAvartar = localimageAvartar;
+    }
 }

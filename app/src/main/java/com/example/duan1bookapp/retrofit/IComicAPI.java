@@ -2,7 +2,6 @@ package com.example.duan1bookapp.retrofit;
 
 import com.example.duan1bookapp.models.Chapter;
 import com.example.duan1bookapp.models.Link;
-import com.example.duan1bookapp.models.MangaComment;
 import com.example.duan1bookapp.models.Product;
 import com.example.duan1bookapp.models.slideShow;
 
@@ -38,11 +37,6 @@ public interface IComicAPI {
     @GET("/api/v1/product/link/{linkid}")
     Call<List<Link>> getPageList(@Path("linkid")int linkid);
 
-    @Headers("Content-Type: application/json")
-    @POST("/api/v1/product/{mangaid}/comment/addNewsComment")
-    Call<MangaComment> createCommentOnGist(@Path("mangaid") int mangaid, @Body MangaComment mangaComment);
-    @Headers("Content-Type: application/json")
-    @GET("/api/v1/product/{id}/comments/get")
-    Call<List<MangaComment>> getGistCommentsById(@Path("id") int mangaid, @Query("page") int pageNum);
+
 
 }
