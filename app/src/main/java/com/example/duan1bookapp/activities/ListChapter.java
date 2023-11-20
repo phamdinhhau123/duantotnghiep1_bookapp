@@ -1,23 +1,19 @@
 package com.example.duan1bookapp.activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemChapterLinstener;
@@ -26,9 +22,6 @@ import com.example.duan1bookapp.models.Chapter;
 import com.example.duan1bookapp.models.Product;
 import com.example.duan1bookapp.retrofit.IComicAPI;
 import com.example.duan1bookapp.retrofit.RetrofitService;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -44,6 +37,7 @@ public class ListChapter extends AppCompatActivity {
 
     private CardView cardView;
 
+    private EditText time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +73,7 @@ public class ListChapter extends AppCompatActivity {
     }
 
     private void fetchChapter(int mangaid) {
+
         IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
         iComicAPI.getChapterList(mangaid).enqueue(new Callback<List<Chapter>>() {
             @Override
@@ -87,7 +82,9 @@ public class ListChapter extends AppCompatActivity {
                 MyChapterAdapter chapterAdapter = new MyChapterAdapter(chapterList, new IClickItemChapterLinstener() {
                     @Override
                     public void onClickItemChapter(Chapter chapter) {
+                        onClickCheckPay(chapter);
                         onClickGoToLinkList(chapter);
+
                     }
                 });
                 recycler_chapter.setAdapter(chapterAdapter);
@@ -100,12 +97,29 @@ public class ListChapter extends AppCompatActivity {
         });
     }
 
+    private Boolean onClickCheckPay(Chapter chapter){
+        Boolean aBoolean= false;
+        IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
+        iComicAPI.getVerifypayment(27,chapter.id).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                Log.d("12345678",String.valueOf(response.body()));
+            }
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Log.d("12345678",t.toString());
+
+            }
+        });
+        return aBoolean;
+    }
     private void onClickGoToLinkList(Chapter chapter){
-        Intent intent = new Intent(this, ListChapterContent.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object_chapter",chapter);
-        intent.putExtras(bundle);
-        startActivity(intent);
+            Intent intent = new Intent(this, ListChapterContent.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("object_chapter",chapter);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
     }
     private void onClickGoToComment() {
         Intent intent = new Intent(this, Comment.class);
@@ -116,7 +130,5 @@ public class ListChapter extends AppCompatActivity {
         cardView = findViewById(R.id.carview_comment);
         recycler_chapter = findViewById(R.id.recycler_chapter);
     }
-
-
 
 }

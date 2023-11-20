@@ -34,13 +34,13 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textColor="@color/colorPrimary"
             android:gravity="bottom"
-
+            android:text="user name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_comment_user_avatar"
             app:layout_constraintTop_toTopOf="@+id/image_comment_user_avatar"
             app:layout_constraintBottom_toTopOf="@id/text_comment_created"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/lorem" />
+            />
 
         <TextView
             android:id="@+id/text_comment_created"

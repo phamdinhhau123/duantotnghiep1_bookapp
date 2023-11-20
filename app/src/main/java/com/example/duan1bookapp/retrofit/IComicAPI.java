@@ -37,6 +37,8 @@ public interface IComicAPI {
     @GET("/api/v1/product/link/{linkid}")
     Call<List<Link>> getPageList(@Path("linkid")int linkid);
 
+    @GET("/api/v1/customer/bag/checkpaytoview/{customerid}/{chapterid}")
+    Call<Boolean> getVerifypayment(@Path("customerid")int customerid,@Path("chapterid")int chapterid);
 
 
 }
