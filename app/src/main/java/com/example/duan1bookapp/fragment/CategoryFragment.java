@@ -68,6 +68,7 @@ public class CategoryFragment extends Fragment {
                 fetchComic("commic");
             }
         });
+        
         mProgressBar = view.findViewById(R.id.progress_mangass);
         return view;
 

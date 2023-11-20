@@ -83,19 +83,22 @@ public class Comment extends AppCompatActivity {
 //        });
 
     }
-    private void initdata(){
+    private void initdata() {
         commentList = new ArrayList<>();
-        BookComment bookComment1 = new BookComment("my first comment1","aaaaaa");
-        BookComment bookComment2 = new BookComment("my first comment2","aaaaaa1");
-        BookComment bookComment3 = new BookComment("my first comment3","aaaaaaa2");
+        BookComment bookComment1 = new BookComment("my first comment1", "aaaaaa");
+        BookComment bookComment2 = new BookComment("my first comment2", "aaaaaa1");
+        BookComment bookComment3 = new BookComment("my first comment3", "aaaaaaa2");
         commentList.add(bookComment1);
         commentList.add(bookComment2);
         commentList.add(bookComment3);
+
         Log.d("bookcomment1", commentList.get(0).getBody());
         Log.d("bookcomment1", commentList.get(0).getCreated_at());
+
         myCommentAdapter = new MyCommentAdapter2(commentList);
         recyclerViewcomment.setAdapter(myCommentAdapter);
     }
+
 
     private void onCreateCommentButtonClick(View view) {
         //Clear any field errors
