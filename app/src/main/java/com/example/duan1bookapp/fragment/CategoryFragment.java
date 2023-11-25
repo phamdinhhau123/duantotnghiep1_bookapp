@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemProductListener;
 import com.example.duan1bookapp.activities.ListChapter;
-import com.example.duan1bookapp.adapters.MyComicAdapter;
+import com.example.duan1bookapp.adapters.AdapterProduct;
 import com.example.duan1bookapp.models.Product;
 import com.example.duan1bookapp.retrofit.IComicAPI;
 import com.example.duan1bookapp.retrofit.RetrofitService;
@@ -31,6 +31,7 @@ import retrofit2.Response;
 
 
 public class CategoryFragment extends Fragment {
+
      RetrofitService retrofitService = new RetrofitService();
     private List<Product> comicList;
     private RecyclerView recycler_comic;
@@ -60,12 +61,14 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_type, container, false);
         btn1 = view.findViewById(R.id.type_btn1);
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fetchComic("commic");
             }
         });
+        
         mProgressBar = view.findViewById(R.id.progress_mangass);
         return view;
 
@@ -88,7 +91,7 @@ public class CategoryFragment extends Fragment {
                 }
                 mProgressBar.setVisibility(View.GONE);
                 comicList = response.body();
-                MyComicAdapter myComicAdapter = new MyComicAdapter(comicList, new IClickItemProductListener() {
+                AdapterProduct myComicAdapter = new AdapterProduct(comicList, new IClickItemProductListener() {
                     @Override
                     public void onClickItemUser(Product product) {
                         onClickGoToChaperList(product);

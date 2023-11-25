@@ -1,6 +1,7 @@
 package com.example.duan1bookapp;
 
 public class Constants {
-    public static final long MAX_BYTES_PDF= 50000000;//50MB
+    public static final String URL_API = "http://192.168.1.11:8080";
+    public static final String URL_IMAGE = "https://firebasestorage.googleapis.com/v0/b/book-app-8a4c9.appspot.com/o/ProfileImages%";
 
 }

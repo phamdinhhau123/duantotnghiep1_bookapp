@@ -29,11 +29,4 @@ public class CustomerDataManager {
         }
         return null;
     }
-
-    public void saveUserEmpty() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-
-    }
 }

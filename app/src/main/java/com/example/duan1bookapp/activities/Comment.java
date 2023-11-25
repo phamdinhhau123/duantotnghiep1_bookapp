@@ -1,24 +1,26 @@
 package com.example.duan1bookapp.activities;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+
 import com.example.duan1bookapp.R;
-import com.example.duan1bookapp.adapters.AdapterComment;
 import com.example.duan1bookapp.models.ProductComment;
-import com.example.duan1bookapp.models.Customer;
 import com.example.duan1bookapp.models.ModelViewComment;
+
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Comment extends AppCompatActivity {
@@ -26,9 +28,8 @@ public class Comment extends AppCompatActivity {
     private TextInputEditText mCommentInput;
 
     private ModelViewComment modelViewComment;
-    private AdapterComment myCommentAdapter;
     private RecyclerView recyclerViewcomment;
-
+    private List<ProductComment> commentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +65,31 @@ public class Comment extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewcomment.setHasFixedSize(true);
         recyclerViewcomment.setLayoutManager(linearLayoutManager);
-        modelViewComment = new ViewModelProvider(this).get(ModelViewComment.class);
-        modelViewComment.getListMutableLiveData().observe(this, new Observer<List<ProductComment>>() {
-            @Override
-            public void onChanged(List<ProductComment> bookComments) {
-                myCommentAdapter = new AdapterComment(bookComments);
-                recyclerViewcomment.setAdapter(myCommentAdapter);
-            }
-        });
+        initdata();
+//        modelViewComment = new ViewModelProvider(this).get(ModelViewComment.class);
+//        modelViewComment.getListMutableLiveData().observe(this, new Observer<List<ProductComment>>() {
+//            @Override
+//            public void onChanged(List<ProductComment> bookComments) {
+//                myCommentAdapter = new AdapterComment(bookComments);
+//                recyclerViewcomment.setAdapter(myCommentAdapter);
+//            }
+//        });
 
     }
+    private void initdata() {
+        commentList = new ArrayList<>();
+        ProductComment bookComment1 = new ProductComment("my first comment1", "aaaaaa");
+        ProductComment bookComment2 = new ProductComment("my first comment2", "aaaaaa1");
+        ProductComment bookComment3 = new ProductComment("my first comment3", "aaaaaaa2");
+        commentList.add(bookComment1);
+        commentList.add(bookComment2);
+        commentList.add(bookComment3);
+
+        Log.d("bookcomment1", commentList.get(0).getBody());
+        Log.d("bookcomment1", commentList.get(0).getCreated_at());
+
+    }
+
 
     private void onCreateCommentButtonClick(View view) {
         //Clear any field errors
@@ -97,9 +113,7 @@ public class Comment extends AppCompatActivity {
         mCommentInput.setText("");
 
         //Try to create the comment
-        ProductComment bookComment= new ProductComment(comment.toString(), new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56");
-
-        modelViewComment.addComment(bookComment);
+//        mViewModel.createComment(comment.toString());
     }
 
 

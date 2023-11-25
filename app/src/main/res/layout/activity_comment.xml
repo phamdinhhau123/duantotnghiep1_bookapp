@@ -98,13 +98,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
             android:padding="5dp"
-            android:text="Danh Sach Nhan Xet"
+            android:text="111"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_book_comments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="16dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />
 </LinearLayout>

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
@@ -19,8 +19,6 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="16dp"
-            android:contentDescription="@string/item_manga_avatar_desc"
-            android:src="@drawable/ic_avatar_placeholder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars"/>
@@ -36,16 +34,16 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textColor="@color/colorPrimary"
             android:gravity="bottom"
-
+            android:text="user name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_comment_user_avatar"
             app:layout_constraintTop_toTopOf="@+id/image_comment_user_avatar"
-            app:layout_constraintBottom_toTopOf="@id/text_comment_created_date"
+            app:layout_constraintBottom_toTopOf="@id/text_comment_created"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/lorem" />
+            />
 
         <TextView
-            android:id="@+id/text_comment_created_date"
+            android:id="@+id/text_comment_created"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"

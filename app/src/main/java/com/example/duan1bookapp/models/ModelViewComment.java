@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelViewComment extends ViewModel {
-
     private MutableLiveData<List<ProductComment>> listMutableLiveData;
     private List<ProductComment> commentList;
 
@@ -19,6 +18,7 @@ public class ModelViewComment extends ViewModel {
     }
 
     private void initData(){
+
         commentList = new ArrayList<>();
         commentList.add(new ProductComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
         commentList.add(new ProductComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
@@ -29,11 +29,4 @@ public class ModelViewComment extends ViewModel {
     public MutableLiveData<List<ProductComment>> getListMutableLiveData() {
         return listMutableLiveData;
     }
-
-    public void addComment(ProductComment bookComment){
-        commentList.add(0,bookComment);
-        listMutableLiveData.setValue(commentList);
-    }
-
-
 }

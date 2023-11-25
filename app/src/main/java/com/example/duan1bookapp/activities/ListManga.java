@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 
 
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemProductListener;
-import com.example.duan1bookapp.adapters.MyComicAdapter;
+import com.example.duan1bookapp.adapters.AdapterProduct;
 import com.example.duan1bookapp.models.Product;
 import com.example.duan1bookapp.retrofit.IComicAPI;
 import com.example.duan1bookapp.retrofit.RetrofitService;
@@ -26,7 +24,6 @@ import retrofit2.Response;
 
 public class ListManga extends AppCompatActivity implements Serializable{
     RetrofitService retrofitService = new RetrofitService();
-    private ProgressBar mProgressBar;
     private List<Product> comicList;
     private RecyclerView recycler_comic;
     @Override
@@ -42,15 +39,12 @@ public class ListManga extends AppCompatActivity implements Serializable{
     }
 
     private void fetchComic() {
-
         IComicAPI iComicAPI =  retrofitService.getRetrofit().create(IComicAPI.class);
         iComicAPI.getComicList().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-
-                mProgressBar.setVisibility(View.GONE);
                 comicList = response.body();
-                MyComicAdapter myComicAdapter = new MyComicAdapter(comicList, new IClickItemProductListener() {
+                AdapterProduct myComicAdapter = new AdapterProduct(comicList, new IClickItemProductListener() {
                     @Override
                     public void onClickItemUser(Product product) {
                         onClickGoToChaperList(product);

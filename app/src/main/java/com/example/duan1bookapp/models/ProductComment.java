@@ -15,7 +15,6 @@ public class ProductComment {
     */
     public int id;
     public String body;
-    public int mangaid;
     public Customer user;
     public String created_at;
 
