@@ -31,7 +31,6 @@ import retrofit2.Response;
 
 
 public class CategoryFragment extends Fragment {
-
      RetrofitService retrofitService = new RetrofitService();
     private List<Product> comicList;
     private RecyclerView recycler_comic;
@@ -61,7 +60,6 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_type, container, false);
         btn1 = view.findViewById(R.id.type_btn1);
-
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

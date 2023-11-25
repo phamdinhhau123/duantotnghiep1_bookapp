@@ -1,7 +1,10 @@
 package com.example.duan1bookapp.activities;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,9 +19,10 @@ import com.example.duan1bookapp.fragment.HomeFragment;
 import com.example.duan1bookapp.fragment.MangaFrament;
 import com.example.duan1bookapp.fragment.MyPageFragment;
 import com.example.duan1bookapp.models.Customer;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class DashBoard extends AppCompatActivity {
-
     private Customer customer = null;
     ActivityDashBoardBinding binding;
     @Override
@@ -42,9 +46,7 @@ public class DashBoard extends AppCompatActivity {
             } else if (item.getItemId() == R.id.nav_ic_comment) {
                 replaceFragment(new FavoriteFragment());
             } else if (item.getItemId() == R.id.nav_ic_buy_coin) {
-                CoinFragment coinFragment = new CoinFragment();
-                coinFragment.setUserID(customerid);
-                replaceFragment(coinFragment);
+                replaceFragment(new CoinFragment());
             }else if (item.getItemId() == R.id.nav_ic_user) {
                 replaceFragment(new MyPageFragment());
             }

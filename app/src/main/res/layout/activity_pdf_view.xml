@@ -55,11 +55,7 @@
         android:layout_below="@id/toolbarRl"/>
 
     <!--ProgressBar: Show white pdf/book is loading from firebase-->
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+
 
 
 </RelativeLayout>

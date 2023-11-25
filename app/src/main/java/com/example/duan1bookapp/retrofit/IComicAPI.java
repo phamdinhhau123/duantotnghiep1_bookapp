@@ -2,8 +2,8 @@ package com.example.duan1bookapp.retrofit;
 
 import com.example.duan1bookapp.models.Chapter;
 import com.example.duan1bookapp.models.Link;
+import com.example.duan1bookapp.models.MangaComment;
 import com.example.duan1bookapp.models.Product;
-import com.example.duan1bookapp.models.slideShow;
 
 import java.util.List;
 
@@ -27,9 +27,6 @@ public interface IComicAPI {
     Call<List<Product>> getComicByTypeList(@Path("categoryname")String categoryname);
 
     @Headers("Content-Type: application/json")
-    @GET("/api/v1/product/comic")
-    Call<List<slideShow>> getShowData();
-    @Headers("Content-Type: application/json")
     @GET("/api/v1/product/chapter/{mangaid}")
     Call<List<Chapter>> getChapterList(@Path("mangaid")int mangaid);
 
@@ -37,8 +34,13 @@ public interface IComicAPI {
     @GET("/api/v1/product/link/{linkid}")
     Call<List<Link>> getPageList(@Path("linkid")int linkid);
 
-    @GET("/api/v1/customer/bag/checkpaytoview/{customerid}/{chapterid}")
-    Call<Boolean> getVerifypayment(@Path("customerid")int customerid,@Path("chapterid")int chapterid);
+    @Headers("Content-Type: application/json")
+    @POST("/api/v1/product/{mangaid}/comment/addNewsComment")
+    Call<MangaComment> createCommentOnGist(@Path("mangaid") int mangaid, @Body MangaComment mangaComment);
+    @Headers("Content-Type: application/json")
+    @GET("/api/v1/product/{id}/comments/get")
+    Call<List<MangaComment>> getGistCommentsById(@Path("id") int mangaid, @Query("page") int pageNum);
+
 
 
 }

@@ -38,9 +38,7 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyCh
         if(chapter == null){
             return;
         }
-        holder.textView1.setText(String.valueOf(chapter.id));
         holder.textView2.setText(chapter.name);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +58,7 @@ public class MyChapterAdapter extends RecyclerView.Adapter<MyChapterAdapter.MyCh
         TextView textView2;
         public MyChapterViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView1 = (TextView) itemView.findViewById(R.id.Chapter_title);
+
             textView2 = (TextView) itemView.findViewById(R.id.Chapter_content);
 
         }

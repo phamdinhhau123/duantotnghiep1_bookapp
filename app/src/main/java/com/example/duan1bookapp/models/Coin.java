@@ -3,7 +3,6 @@ package com.example.duan1bookapp.models;
 import java.io.Serializable;
 
 public class Coin implements Serializable {
-
     public int id;
     public int value;
 

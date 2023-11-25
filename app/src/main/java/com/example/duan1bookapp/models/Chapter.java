@@ -3,12 +3,11 @@ package com.example.duan1bookapp.models;
 import java.io.Serializable;
 
 public class Chapter implements Serializable {
-
     public int id;
     public int mangaid;
     public String name;
     public int bag;
-    public boolean paytoview;
+
     public Chapter() {
     }
 
@@ -23,12 +22,5 @@ public class Chapter implements Serializable {
         this.mangaid = mangaid;
         this.name = name;
         this.bag = bag;
-    }
-
-    public Chapter(int mangaid, String name, int bag, boolean paytoview) {
-        this.mangaid = mangaid;
-        this.name = name;
-        this.bag = bag;
-        this.paytoview = paytoview;
     }
 }

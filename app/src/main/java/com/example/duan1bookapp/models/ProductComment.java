@@ -1,7 +1,7 @@
 package com.example.duan1bookapp.models;
 
 
-public class BookComment {
+public class ProductComment {
     /*
     Modified sample data from: https://developer.github.com/v3/gists/comments/#list-comments-on-a-gist
     {
@@ -15,6 +15,7 @@ public class BookComment {
     */
     public int id;
     public String body;
+    public int mangaid;
     public Customer user;
     public String created_at;
 
@@ -51,13 +52,13 @@ public class BookComment {
         this.created_at = created_at;
     }
 
-    public BookComment(String body, Customer user, String created_at) {
+    public ProductComment(String body, Customer user, String created_at) {
         this.body = body;
         this.user = user;
         this.created_at = created_at;
     }
 
-    public BookComment(String body, String created_at) {
+    public ProductComment(String body, String created_at) {
         this.body = body;
         this.created_at = created_at;
     }

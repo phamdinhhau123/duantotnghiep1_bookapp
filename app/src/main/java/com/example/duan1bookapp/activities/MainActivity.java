@@ -8,8 +8,9 @@ import android.view.View;
 
 import com.example.duan1bookapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
 

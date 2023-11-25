@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.momo.momo_partner.AppMoMoLib;
 
-public class payment extends AppCompatActivity {
+public class Payment extends AppCompatActivity {
     RetrofitService retrofitService = new RetrofitService();
 
     private int amount ;
@@ -37,7 +38,9 @@ public class payment extends AppCompatActivity {
     private String description = "Thanh toán dịch vụ ABC";
     private String orderid;
     private int userid;
-
+    private TextView textViewName;
+    private TextView textViewPrice;
+    private TextView textViewContent;
     private Button momo2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class payment extends AppCompatActivity {
         orderid = extras.getString("VALUE_I_NEED_ORDER_ID");
         amount = extras.getInt("VALUE_I_NEED_ORDER_AMOUNT");
         userid = extras.getInt("VALUE_I_NEED_USER_ID");
-        momo2 = findViewById(R.id.momo_btn2);
+        momo2 = findViewById(R.id.momo_confirm_payment);
         momo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +115,7 @@ public class payment extends AppCompatActivity {
                         env = "app";
 
                     if(token != null && !token.equals("")) {
-                        // TODO: send phoneNumber & token to your server side to process payment with MoMo server
+                        // TODO: send phoneNumber & token to your server side to process Payment with MoMo server
                         verify(Integer.valueOf(orderid),token);
 
                         // IF Momo topup success, continue to process your order

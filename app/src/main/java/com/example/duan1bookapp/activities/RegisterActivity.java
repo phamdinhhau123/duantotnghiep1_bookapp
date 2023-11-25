@@ -84,6 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
 //        } else if (!password.equals(cPassword)) {
 //            Toast.makeText(this, "Password doesn't match...", Toast.LENGTH_SHORT).show();
         } else {
+
+
             Coin coin = new Coin(0);
             Customer customer = new Customer(customerName,customerPassword,customereMail,customerbirthDate,coin,true);
             CustomerApi customerApi = retrofitService.getRetrofit().create(CustomerApi.class);
@@ -101,8 +103,9 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
 
-        }
+            }
     }
+
 
 
 

@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelViewComment extends ViewModel {
-    private MutableLiveData<List<BookComment>> listMutableLiveData;
-    private List<BookComment> commentList;
+
+    private MutableLiveData<List<ProductComment>> listMutableLiveData;
+    private List<ProductComment> commentList;
 
 
     public ModelViewComment(){
@@ -18,15 +19,21 @@ public class ModelViewComment extends ViewModel {
     }
 
     private void initData(){
-
         commentList = new ArrayList<>();
-        commentList.add(new BookComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
-        commentList.add(new BookComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
-        commentList.add(new BookComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
+        commentList.add(new ProductComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
+        commentList.add(new ProductComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
+        commentList.add(new ProductComment("my first comment", new Customer("abc",R.mipmap.user_1),"2011-04-18 23:23:56"));
         listMutableLiveData.setValue(commentList);
     }
 
-    public MutableLiveData<List<BookComment>> getListMutableLiveData() {
+    public MutableLiveData<List<ProductComment>> getListMutableLiveData() {
         return listMutableLiveData;
     }
+
+    public void addComment(ProductComment bookComment){
+        commentList.add(0,bookComment);
+        listMutableLiveData.setValue(commentList);
+    }
+
+
 }

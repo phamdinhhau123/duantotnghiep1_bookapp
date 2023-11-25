@@ -3,8 +3,8 @@ package com.example.duan1bookapp.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-
 public class Product implements Serializable {
+
     public int id;
     public String productName;
     public String employeeName;
@@ -13,9 +13,9 @@ public class Product implements Serializable {
     public String productImageName;
     public int soTap;
     public Date updatedAt;
-    public ArrayList<Object> chapter;
+    public ArrayList<Chapter> chapter;
     public ArrayList<Category> categories;
-
+    public ArrayList<MangaComment> mComment;
 
     public Product(int id, String productName, String productImageName) {
         this.id = id;
@@ -26,7 +26,7 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(int id, String productName, String employeeName, String productAuthor, String productShortDescription, String productImageName, int soTap, Date updatedAt, ArrayList<Object> chapter, ArrayList<Category> categories) {
+    public Product(int id, String productName, String employeeName, String productAuthor, String productShortDescription, String productImageName, int soTap, Date updatedAt, ArrayList<Chapter> chapter, ArrayList<Category> categories) {
         this.id = id;
         this.productName = productName;
         this.employeeName = employeeName;
@@ -103,19 +103,40 @@ public class Product implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public ArrayList<Object> getChapter() {
+    public ArrayList<Chapter> getChapter() {
         return chapter;
     }
 
-    public void setChapter(ArrayList<Object> chapter) {
+    public ArrayList<MangaComment> getMangaComment() {
+        return null ;
+    }
+
+    public void setChapter(ArrayList<Chapter> chapter) {
         this.chapter = chapter;
     }
 
-    public ArrayList<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(ArrayList<Category> categories) {
+    public Product(int id, String productName, String employeeName, String productAuthor, String productShortDescription, String productImageName, int soTap, Date updatedAt, ArrayList<Category> categories) {
+        this.id = id;
+        this.productName = productName;
+        this.employeeName = employeeName;
+        this.productAuthor = productAuthor;
+        this.productShortDescription = productShortDescription;
+        this.productImageName = productImageName;
+        this.soTap = soTap;
+        this.updatedAt = updatedAt;
         this.categories = categories;
+    }
+    public Product(int id, String productName, String employeeName, String productAuthor, String productShortDescription, String productImageName, int soTap, Date updatedAt, ArrayList<Chapter> chapter, ArrayList<Category> categories, ArrayList<MangaComment> mComment) {
+        this.id = id;
+        this.productName = productName;
+        this.employeeName = employeeName;
+        this.productAuthor = productAuthor;
+        this.productShortDescription = productShortDescription;
+        this.productImageName = productImageName;
+        this.soTap = soTap;
+        this.updatedAt = updatedAt;
+        this.chapter = chapter;
+        this.categories = categories;
+        this.mComment = null;
     }
 }

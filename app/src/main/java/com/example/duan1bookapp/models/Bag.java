@@ -53,4 +53,9 @@ public class Bag implements Serializable {
         this.type = type;
         this.created_at = created_at;
     }
+
+    public Bag(Integer idcustomer, Integer idchapter) {
+        this.idcustomer = idcustomer;
+        this.idchapter = idchapter;
+    }
 }
