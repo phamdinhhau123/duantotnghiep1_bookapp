@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemProductListener;
 import com.example.duan1bookapp.activities.ListChapter;
-import com.example.duan1bookapp.adapters.MyComicAdapter;
+import com.example.duan1bookapp.adapters.AdapterProduct;
 import com.example.duan1bookapp.adapters.SliderAdapterExample;
 import com.example.duan1bookapp.databinding.FragmentHomeBinding;
 import com.example.duan1bookapp.models.Product;
@@ -25,7 +25,6 @@ import com.example.duan1bookapp.models.slideShow;
 import com.example.duan1bookapp.retrofit.IComicAPI;
 import com.example.duan1bookapp.retrofit.RetrofitService;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -83,7 +82,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 comicList = response.body();
-                MyComicAdapter myComicAdapter = new MyComicAdapter(comicList, new IClickItemProductListener() {
+                AdapterProduct myComicAdapter = new AdapterProduct(comicList, new IClickItemProductListener() {
                     @Override
                     public void onClickItemUser(Product product) {
                         onClickGoToChapterList(product);
@@ -102,7 +101,9 @@ public class HomeFragment extends Fragment {
     private void onClickGoToChapterList(Product product) {
         Intent intent = new Intent(getContext(), ListChapter.class);
         Bundle bundle = new Bundle();
+
         bundle.putSerializable("object_product", product);
+        bundle.putSerializable("object_Category", product.categories);
         intent.putExtras(bundle);
         startActivity(intent);
     }

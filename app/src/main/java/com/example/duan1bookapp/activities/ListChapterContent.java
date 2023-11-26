@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1bookapp.R;
-import com.example.duan1bookapp.adapters.MyComicPageAdapter;
+import com.example.duan1bookapp.adapters.AdapterChapterContent;
 import com.example.duan1bookapp.models.Chapter;
 import com.example.duan1bookapp.models.Link;
 import com.example.duan1bookapp.retrofit.IComicAPI;
@@ -124,7 +124,7 @@ public class ListChapterContent extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Link>> call, Response<List<Link>> response) {
                 linkList = response.body();
-                recycler_link.setAdapter(new MyComicPageAdapter(linkList));
+                recycler_link.setAdapter(new AdapterChapterContent(linkList));
                 // Cập nhật toolbarSubtitleTv với số trang ban đầu
                 updateToolbarSubtitle(1);
             }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.CoinFragment"
+    tools:context=".fragment.DonateFragment"
     android:background="@drawable/back01">
 
 <LinearLayout

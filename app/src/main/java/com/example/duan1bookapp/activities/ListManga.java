@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.a_interface.IClickItemProductListener;
-import com.example.duan1bookapp.adapters.MyComicAdapter;
+import com.example.duan1bookapp.adapters.AdapterProduct;
 import com.example.duan1bookapp.models.Product;
 import com.example.duan1bookapp.retrofit.IComicAPI;
 import com.example.duan1bookapp.retrofit.RetrofitService;
@@ -44,7 +44,7 @@ public class ListManga extends AppCompatActivity implements Serializable{
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 comicList = response.body();
-                MyComicAdapter myComicAdapter = new MyComicAdapter(comicList, new IClickItemProductListener() {
+                AdapterProduct myComicAdapter = new AdapterProduct(comicList, new IClickItemProductListener() {
                     @Override
                     public void onClickItemUser(Product product) {
                         onClickGoToChaperList(product);

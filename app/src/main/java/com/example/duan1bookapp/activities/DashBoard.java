@@ -9,15 +9,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.duan1bookapp.R;
 import com.example.duan1bookapp.databinding.ActivityDashBoardBinding;
-import com.example.duan1bookapp.fragment.CoinFragment;
+import com.example.duan1bookapp.fragment.CategoryFragment;
+import com.example.duan1bookapp.fragment.DonateFragment;
 import com.example.duan1bookapp.fragment.FavoriteFragment;
 import com.example.duan1bookapp.fragment.HomeFragment;
-import com.example.duan1bookapp.fragment.MangaFrament;
-import com.example.duan1bookapp.fragment.MyPageFragment;
+import com.example.duan1bookapp.fragment.ProfileFragment;
 import com.example.duan1bookapp.models.Customer;
 
 public class DashBoard extends AppCompatActivity {
-    public Customer customer;
+
     ActivityDashBoardBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,30 +25,19 @@ public class DashBoard extends AppCompatActivity {
         binding = ActivityDashBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle == null){
-            return;
-        }
-        customer = (Customer) bundle.get("object_customer");
-        int customerid= customer.getId();
         replaceFragment(new HomeFragment());
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.ic_home) {
+            if (item.getItemId() == R.id.nav_ic_home) {
                 replaceFragment(new HomeFragment());
-            } else if (item.getItemId() == R.id.ic_manga) {
-                replaceFragment(new MangaFrament());
-            } else if (item.getItemId() == R.id.ic_buy_coin) {
-                CoinFragment coinFragment = new CoinFragment();
-                Bundle args = new Bundle();
-                args.putSerializable("customerid",String.valueOf(customerid));
-                coinFragment.setArguments(args);
+            } else if (item.getItemId() == R.id.nav_ic_manga) {
+                replaceFragment(new CategoryFragment());
+            } else if (item.getItemId() == R.id.nav_ic_comment) {
+                replaceFragment(new FavoriteFragment());
+            } else if (item.getItemId() == R.id.nav_ic_buy_coin) {
+                DonateFragment coinFragment = new DonateFragment();
                 replaceFragment(coinFragment);
-            } else if (item.getItemId() == R.id.ic_user) {
-                MyPageFragment myPageFragment = new MyPageFragment();
-                Bundle args = new Bundle();
-                args.putSerializable("object_customer1",customer);
-                myPageFragment.setArguments(args);
-                replaceFragment(myPageFragment);
+            }else if (item.getItemId() == R.id.nav_ic_user) {
+                replaceFragment(new ProfileFragment());
             }
             return true;
         });

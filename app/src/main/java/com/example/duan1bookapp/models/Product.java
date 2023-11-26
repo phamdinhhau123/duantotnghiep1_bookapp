@@ -16,7 +16,8 @@ public class Product implements Serializable {
     public ArrayList<Object> chapter;
     public ArrayList<Category> categories;
 
-
+    public int price;
+    public int view;
     public Product(int id, String productName, String productImageName) {
         this.id = id;
         this.productName = productName;
@@ -117,5 +118,20 @@ public class Product implements Serializable {
 
     public void setCategories(ArrayList<Category> categories) {
         this.categories = categories;
+    }
+
+    public Product(int id, String productName, String employeeName, String productAuthor, String productShortDescription, String productImageName, int soTap, Date updatedAt, ArrayList<Object> chapter, ArrayList<Category> categories, int price, int view) {
+        this.id = id;
+        this.productName = productName;
+        this.employeeName = employeeName;
+        this.productAuthor = productAuthor;
+        this.productShortDescription = productShortDescription;
+        this.productImageName = productImageName;
+        this.soTap = soTap;
+        this.updatedAt = updatedAt;
+        this.chapter = chapter;
+        this.categories = categories;
+        this.price = price;
+        this.view = view;
     }
 }

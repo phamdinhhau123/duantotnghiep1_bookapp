@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.duan1bookapp.databinding.ActivityLoginBinding;
 import com.example.duan1bookapp.models.Customer;
+import com.example.duan1bookapp.models.CustomerDataManager;
 import com.example.duan1bookapp.retrofit.CustomerApi;
 import com.example.duan1bookapp.retrofit.RetrofitService;
 
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private RetrofitService retrofitService = new RetrofitService();
+    private CustomerDataManager customerDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        customerDataManager = new CustomerDataManager(this);
 
 
         // handle click, go to register screen
@@ -91,9 +94,11 @@ public class LoginActivity extends AppCompatActivity {
                         Customer customer = response.body();
                         Intent intent = new Intent(LoginActivity.this, DashBoard.class);
                         Bundle bundle = new Bundle();
+                        customerDataManager.saveUser(customer);
                         bundle.putSerializable("object_customer",customer);
                         intent.putExtras(bundle);
-                        startActivity(intent);                    }
+                        startActivity(intent);
+                    }
                     @Override
                     public void onFailure(Call<Customer> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),"Login failded!", Toast.LENGTH_SHORT).show();
