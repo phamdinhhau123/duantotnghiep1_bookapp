@@ -40,7 +40,7 @@ public class cate1 extends AppCompatActivity {
         mProgressBar = findViewById(R.id.progress_mangass); // Replace with your ProgressBar ID
 
         recyclerComic.setLayoutManager(new GridLayoutManager(this, 2));
-        fetchComic("comic2");
+        fetchComic("Action");
     }
 
     private void fetchComic(String type) {
