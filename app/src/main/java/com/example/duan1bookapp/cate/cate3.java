@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import com.example.duan1bookapp.R;
@@ -36,6 +37,13 @@ public class cate3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cate3);
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Quay lại trang trước
+            }
+        });
         recyclerComic = findViewById(R.id.recycler_comic_1); // Replace with your RecyclerView ID
         mProgressBar = findViewById(R.id.progress_mangass); // Replace with your ProgressBar ID
 
