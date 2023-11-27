@@ -1,39 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@drawable/back01"
     android:padding="12dp">
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:orientation="horizontal">
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp">
+
         <!--Search-->
         <Button
             android:id="@+id/type_btn1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1">
-        </Button>
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_button02"
+            android:elevation="10dp"
+            android:text="Comic2"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/type_btn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2">
-        </Button>
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_button02"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:textSize="10dp"
+            android:text="Sach Giao Khoa" />
+
         <Button
             android:id="@+id/type_btn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3">
-        </Button>
-    </LinearLayout>
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_button02"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:text="commic1"
+             />
+        <Button
+            android:id="@+id/type_btn4"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_button02"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:text="3"
+            />
+        <Button
+            android:id="@+id/type_btn5"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_button02"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:text="3"
+            />
+        <Button
+            android:id="@+id/type_btn6"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_button02"
+            android:textColor="@color/black"
+            android:elevation="10dp"
+            android:text="3"
 
+            />
+
+        <!-- Add more buttons here if needed -->
+
+    </GridLayout>
 
 </LinearLayout>
